@@ -1,0 +1,16 @@
+services:
+  application:
+    container_name: appNode
+    restart: always
+    build: .
+    ports:
+      - "3030:3000"
+    links:
+     - databaseMongo
+    volumes:
+     - .:/home/appnode
+  databaseMongo:
+    container_name: mongoDB
+    image: mongo
+    ports:
+      - "27017:27017"
